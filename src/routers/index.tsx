@@ -15,10 +15,6 @@ console.log(routerArray);
 
 export const rootRouter: RouteObject | any[] = [
   {
-    path: "/",
-    element: <Navigate to="/login" />
-  },
-  {
     path: "/login",
     element: <Login />,
     meta: {

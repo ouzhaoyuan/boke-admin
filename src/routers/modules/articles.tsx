@@ -3,14 +3,15 @@
 import { LayoutIndex } from "@/routers/constant";
 import { RouteObject } from "@/routers/interface";
 import Articles from "@/views/articles/index";
+import ArticlesDarft from "@/views/articles/draft";
 
 // 首页模块
-const homeRouter: Array<RouteObject> = [
+const articleRouter: Array<RouteObject> = [
   {
     element: <LayoutIndex></LayoutIndex>,
     children: [
       {
-        path: "/articles",
+        path: "/article/list",
         // element: lazyLoad(React.lazy(() => import("@/views/home/index"))),
         element: <Articles />,
         meta: {
@@ -20,9 +21,9 @@ const homeRouter: Array<RouteObject> = [
         }
       },
       {
-        path: "/articles",
+        path: "/article/draft",
         // element: lazyLoad(React.lazy(() => import("@/views/home/index"))),
-        element: <Articles />,
+        element: <ArticlesDarft />,
         meta: {
           requiresAuth: true,
           title: "草稿箱",
@@ -33,4 +34,4 @@ const homeRouter: Array<RouteObject> = [
   }
 ];
 
-export default homeRouter;
+export default articleRouter;

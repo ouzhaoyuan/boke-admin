@@ -3,18 +3,37 @@ import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import type { MenuProps } from "antd";
 import { getMenuListApi } from "@/api/modules/login";
+import { getOpenKeys } from "@/utils/util";
 import * as Icons from "@ant-design/icons";
 import "./index.scss";
 
 const LayoutMenu = (props: any) => {
-  const { pathname } = useLocation();
   const {
     isCollapse,
     setBreadcrumbList,
     setAuthRouter,
     setMenuList: setMenuListAction
   } = props;
+
+  const { pathname } = useLocation();
   const [selectedKeys, setSelectedKeys] = useState<string[]>([pathname]);
+  const [loading, setLoading] = useState(false);
+  const [openKeys, setOpenKeys] = useState<string[]>([]);
+
+  // 刷新页面菜单保持高亮
+  useEffect(() => {
+    setSelectedKeys([pathname]);
+    isCollapse ? null : setOpenKeys(getOpenKeys(pathname));
+  }, [pathname, isCollapse]);
+
+  // 设置当前展开的 subMenu
+  const onOpenChange = (openKeys: string[]) => {
+    if (openKeys.length === 0 || openKeys.length === 1)
+      return setOpenKeys(openKeys);
+    const latestOpenKey = openKeys[openKeys.length - 1];
+    if (latestOpenKey.includes(openKeys[0])) return setOpenKeys(openKeys);
+    setOpenKeys([latestOpenKey]);
+  };
 
   // 定义 menu 类型
   type MenuItem = Required<MenuProps>["items"][number];
@@ -73,7 +92,11 @@ const LayoutMenu = (props: any) => {
     getMenuData();
   }, []);
 
-  const [loading, setLoading] = useState(false);
+  // 点击当前菜单跳转页面
+  const navigate = useNavigate();
+  const onClickMenu = ({ key }: { key: string }) => {
+    navigate(key);
+  };
 
   return (
     <Spin spinning={loading} tip="Loading...">
@@ -81,11 +104,11 @@ const LayoutMenu = (props: any) => {
         theme="dark"
         mode="inline"
         triggerSubMenuAction="click"
-        // openKeys={openKeys}
-        // selectedKeys={selectedKeys}
+        openKeys={openKeys}
+        selectedKeys={selectedKeys}
         items={menuList}
-        // onClick={clickMenu}
-        // onOpenChange={onOpenChange}
+        onClick={onClickMenu}
+        onOpenChange={onOpenChange}
       ></Menu>
     </Spin>
   );
