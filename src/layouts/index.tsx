@@ -3,6 +3,8 @@ import LayoutFooter from "./components/Footer";
 import LayoutMenu from "./components/Menu";
 import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
+import { useAppSelector } from "@/store/hooks";
+
 import "./index.scss";
 const { Content, Sider } = Layout;
 type LayoutIndexType = {
@@ -10,6 +12,7 @@ type LayoutIndexType = {
 };
 
 const LayoutIndex = (props: LayoutIndexType) => {
+  const { isCollapse } = useAppSelector((state) => state.global);
   return (
     <>
       <Layout>
@@ -17,11 +20,11 @@ const LayoutIndex = (props: LayoutIndexType) => {
         <Layout>
           <Sider
             trigger={null}
-            collapsed={props.isCollapse}
+            collapsed={isCollapse}
             width={220}
             theme="dark"
           >
-            <LayoutMenu></LayoutMenu>
+            <LayoutMenu isCollapse={isCollapse}></LayoutMenu>
           </Sider>
           <Content className="content">
             <Outlet></Outlet>

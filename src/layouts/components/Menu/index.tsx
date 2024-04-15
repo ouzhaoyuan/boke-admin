@@ -20,6 +20,7 @@ const LayoutMenu = (props: any) => {
   const [loading, setLoading] = useState(false);
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
+
   // 刷新页面菜单保持高亮
   useEffect(() => {
     setSelectedKeys([pathname]);
@@ -108,6 +109,7 @@ const LayoutMenu = (props: any) => {
         selectedKeys={selectedKeys}
         items={menuList}
         onClick={onClickMenu}
+        inlineCollapsed={isCollapse}
         onOpenChange={onOpenChange}
       ></Menu>
     </Spin>

@@ -1,9 +1,7 @@
-// import React from "react";
-// import lazyLoad from "@/routers/util/lazyLoad";
+import React from "react";
+import lazyLoad from "@/routers/utils/lazyLoad";
 import { LayoutIndex } from "@/routers/constant";
 import { RouteObject } from "@/routers/interface";
-import Articles from "@/views/articles/index";
-import ArticlesDarft from "@/views/articles/draft";
 
 // 首页模块
 const articleRouter: Array<RouteObject> = [
@@ -12,8 +10,7 @@ const articleRouter: Array<RouteObject> = [
     children: [
       {
         path: "/article/list",
-        // element: lazyLoad(React.lazy(() => import("@/views/home/index"))),
-        element: <Articles />,
+        element: lazyLoad(React.lazy(() => import("@/views/articles/index"))),
         meta: {
           requiresAuth: true,
           title: "文章列表",
@@ -22,12 +19,20 @@ const articleRouter: Array<RouteObject> = [
       },
       {
         path: "/article/draft",
-        // element: lazyLoad(React.lazy(() => import("@/views/home/index"))),
-        element: <ArticlesDarft />,
+        element: lazyLoad(React.lazy(() => import("@/views/articles/draft"))),
         meta: {
           requiresAuth: true,
           title: "草稿箱",
           key: "articles-draft"
+        }
+      },
+      {
+        path: "/article/info/:id",
+        element: lazyLoad(React.lazy(() => import("@/views/articles/info"))),
+        meta: {
+          requiresAuth: true,
+          title: "文章详情",
+          key: "articles-info"
         }
       }
     ]
