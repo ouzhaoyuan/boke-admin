@@ -1,7 +1,7 @@
 import React from "react";
 import lazyLoad from "@/routers/utils/lazyLoad";
 import { RouteObject } from "@/routers/interface";
-import LayoutIndex from "@/layouts";
+import {LayoutIndex} from "@/routers/auth";
 
 // 错误页面模块
 const errorRouter: Array<RouteObject> = [

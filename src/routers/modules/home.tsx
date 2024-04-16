@@ -1,6 +1,6 @@
 // import React from "react";
 // import lazyLoad from "@/routers/util/lazyLoad";
-import { LayoutIndex } from "@/routers/constant";
+import { LayoutIndex } from "@/routers/auth";
 import { RouteObject } from "@/routers/interface";
 import Home from "@/views/home/index";
 
