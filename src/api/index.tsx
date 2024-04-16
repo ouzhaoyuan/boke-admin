@@ -17,7 +17,6 @@ const config = {
   showErr: true
 };
 
-
 class RequestHttp {
   service: AxiosInstance;
   constructor(config: AxiosRequestConfig) {
@@ -30,11 +29,14 @@ class RequestHttp {
     this.service.interceptors.response.use(
       (response) => {
         NProgress.done();
-        const { data, config } = response;
-        return data;
+        const { data } = response;
+        if (data.status === 500) {
+          return { err: response.statusText || "", ...data };
+        }
+        return { data };
       },
       (err) => {
-        const { response, config } = err;
+        const { response } = err;
         NProgress.done();
         message.error(response.statusText);
         return { err: response.statusText || "" };

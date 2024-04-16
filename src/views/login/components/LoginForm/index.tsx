@@ -2,31 +2,30 @@ import { Button, Checkbox, Form, type FormProps, Input, message } from "antd";
 import { useState } from "react";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { useNavigate } from "react-router-dom";
-import md5 from "js-md5";
+import { loginApi } from "@/api/modules/login";
+import "./index.scss";
 import {
   UserOutlined,
   LockOutlined,
   CloseCircleOutlined
 } from "@ant-design/icons";
+import { API } from "@/api/modules/typings";
 
-type FieldType = {
-  username?: string;
-  password?: string;
-  remember?: string;
-};
-
-export default (props: any) => {
+export default () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
   const { list } = useAppSelector((store) => store.movie);
   const dispatch = useAppDispatch();
-  const onFinish = async (loginForm: any) => {
-    console.log(loginForm);
-
+  const onFinish = async (loginForm: API.LoginParams) => {
     try {
       setLoading(true);
-      localStorage.setItem("token", "123456");
+      let { data, err } = await loginApi({
+        username: loginForm.username,
+        password: loginForm.password
+      });
+      if (err) return;
+      localStorage.setItem("token", data!.token);
       message.success("登录成功！");
       navigate("/home");
     } finally {
@@ -42,6 +41,7 @@ export default (props: any) => {
     <Form
       form={form}
       name="basic"
+      className="login-form"
       labelCol={{ span: 5 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
@@ -51,9 +51,9 @@ export default (props: any) => {
     >
       <Form.Item
         name="username"
-        rules={[{ required: true, message: "请输入用户名" }]}
+        rules={[{ required: true, message: "请输入账号" }]}
       >
-        <Input placeholder="用户名：admin / user" prefix={<UserOutlined />} />
+        <Input placeholder="请输入账号" prefix={<UserOutlined />} />
       </Form.Item>
       <Form.Item
         name="password"
@@ -61,7 +61,7 @@ export default (props: any) => {
       >
         <Input.Password
           autoComplete="new-password"
-          placeholder="密码：123456"
+          placeholder="请输入密码"
           prefix={<LockOutlined />}
         />
       </Form.Item>
