@@ -24,6 +24,9 @@ class RequestHttp {
     this.service = axios.create(config);
     this.service.interceptors.request.use((config) => {
       NProgress.start();
+      if (localStorage.getItem("token")) {
+        config.headers.token = localStorage.getItem("token");
+      }
       return config;
     });
     this.service.interceptors.response.use(
@@ -33,7 +36,7 @@ class RequestHttp {
         if (data.status === 500) {
           return { err: response.statusText || "", ...data };
         }
-        return { data };
+        return { data : data.data || data };
       },
       (err) => {
         const { response } = err;

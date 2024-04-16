@@ -2,7 +2,7 @@ import { Menu, Spin } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import type { MenuProps } from "antd";
-import { getMenuListApi } from "@/api/modules/login";
+// import { getMenuListApi } from "@/api/modules/user";
 import { getOpenKeys } from "@/utils/util";
 import * as Icons from "@ant-design/icons";
 import "./index.scss";
@@ -24,7 +24,7 @@ const LayoutMenu = (props: any) => {
   // 刷新页面菜单保持高亮
   useEffect(() => {
     setSelectedKeys([pathname]);
-    isCollapse ? null : setOpenKeys(getOpenKeys(pathname));
+    isCollapse ? false : setOpenKeys(getOpenKeys(pathname));
   }, [pathname, isCollapse]);
 
   // 设置当前展开的 subMenu
@@ -84,8 +84,35 @@ const LayoutMenu = (props: any) => {
   };
 
   const getMenuData = async () => {
-    const { data, err } = await getMenuListApi();
-    if (err) return;
+    // const { data, err } = await getMenuListApi();
+    // if (err) return;
+    let data = [
+      {
+        "icon": "HomeOutlined",
+        "title": "首页",
+        "path": "/home",
+        "children": []
+      },
+      {
+        "icon": "HomeOutlined",
+        "title": "权限管理",
+        "path": "/auth",
+        "children": [
+          {
+            "icon": "HomeOutlined",
+            "title": "角色管理",
+            "path": "/auth/role",
+            "children": []
+          },
+          {
+            "icon": "HomeOutlined",
+            "title": "菜单目录",
+            "path": "/auth/menu",
+            "children": []
+          },
+        ]
+      },
+    ]
     if (data) setMenuList(deepLoopFloat(data));
   };
 
@@ -109,7 +136,6 @@ const LayoutMenu = (props: any) => {
         selectedKeys={selectedKeys}
         items={menuList}
         onClick={onClickMenu}
-        inlineCollapsed={isCollapse}
         onOpenChange={onOpenChange}
       ></Menu>
     </Spin>

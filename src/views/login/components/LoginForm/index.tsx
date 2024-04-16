@@ -2,7 +2,8 @@ import { Button, Checkbox, Form, type FormProps, Input, message } from "antd";
 import { useState } from "react";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { useNavigate } from "react-router-dom";
-import { loginApi } from "@/api/modules/login";
+import { loginApi, getUserInfoApi } from "@/api/modules/user";
+import { setUserInfo } from "@/store/modules/user";
 import "./index.scss";
 import {
   UserOutlined,
@@ -20,17 +21,23 @@ export default () => {
   const onFinish = async (loginForm: API.LoginParams) => {
     try {
       setLoading(true);
-      let { data, err } = await loginApi({
+      let { data } = await loginApi({
         username: loginForm.username,
         password: loginForm.password
       });
-      if (err) return;
       localStorage.setItem("token", data!.token);
-      message.success("登录成功！");
-      navigate("/home");
+      getUserInfo();
     } finally {
       setLoading(false);
     }
+  };
+
+  const getUserInfo = async () => {
+    let { data, err } = await getUserInfoApi();
+    if (err) return;
+    dispatch(setUserInfo(data));
+    message.success("登录成功！");
+    navigate("/home");
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -43,7 +50,7 @@ export default () => {
       name="basic"
       className="login-form"
       labelCol={{ span: 5 }}
-      initialValues={{ remember: true }}
+      initialValues={{ username: "admin", password: "2023@Gjs1984!" }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       size="large"
