@@ -10,7 +10,7 @@ const errorRouter: Array<RouteObject> = [
     children: [
       {
         path: "/403",
-        element: lazyLoad(React.lazy(() => import("@/views/error/403"))),
+        element: lazyLoad(React.lazy(() => import("@/views/Error/403"))),
         meta: {
           requiresAuth: true,
           title: "403页面",
@@ -19,7 +19,7 @@ const errorRouter: Array<RouteObject> = [
       },
       {
         path: "/404",
-        element: lazyLoad(React.lazy(() => import("@/views/error/404"))),
+        element: lazyLoad(React.lazy(() => import("@/views/Error/404"))),
         meta: {
           requiresAuth: false,
           title: "404页面",
@@ -28,7 +28,7 @@ const errorRouter: Array<RouteObject> = [
       },
       {
         path: "/500",
-        element: lazyLoad(React.lazy(() => import("@/views/error/500"))),
+        element: lazyLoad(React.lazy(() => import("@/views/Error/500"))),
         meta: {
           requiresAuth: false,
           title: "500页面",

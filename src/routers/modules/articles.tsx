@@ -10,7 +10,7 @@ const articleRouter: Array<RouteObject> = [
     children: [
       {
         path: "/article/list",
-        element: lazyLoad(React.lazy(() => import("@/views/articles/index"))),
+        element: lazyLoad(React.lazy(() => import("@/views/Articles/index"))),
         meta: {
           requiresAuth: true,
           title: "文章列表",
@@ -19,7 +19,7 @@ const articleRouter: Array<RouteObject> = [
       },
       {
         path: "/article/draft",
-        element: lazyLoad(React.lazy(() => import("@/views/articles/draft"))),
+        element: lazyLoad(React.lazy(() => import("@/views/Articles/Info"))),
         meta: {
           requiresAuth: true,
           title: "草稿箱",
@@ -28,7 +28,7 @@ const articleRouter: Array<RouteObject> = [
       },
       {
         path: "/article/info/:id",
-        element: lazyLoad(React.lazy(() => import("@/views/articles/info"))),
+        element: lazyLoad(React.lazy(() => import("@/views/Articles/Info"))),
         meta: {
           requiresAuth: true,
           title: "文章详情",
