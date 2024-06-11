@@ -14,7 +14,6 @@ const Header = () => {
   return (
     <div>
       <div>
-        {isCollapse ? 1 : 2}
         <Button
           type="primary"
           onClick={toggleCollapsed}

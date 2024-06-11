@@ -95,8 +95,14 @@ const LayoutMenu = (props: any) => {
       },
       {
         "icon": "HomeOutlined",
+        "title": "鞋子管理",
+        "path": "/shoe/list",
+        "children": []
+      },
+      {
+        "icon": "HomeOutlined",
         "title": "权限管理",
-        "path": "/auth",
+        "path": "/shoe",
         "children": [
           {
             "icon": "HomeOutlined",
