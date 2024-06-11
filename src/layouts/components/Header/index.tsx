@@ -12,13 +12,10 @@ const Header = () => {
     dispatch(setisCollapse(!isCollapse));
   };
   return (
-    <div>
-      <div>
-        <Button
-          type="primary"
-          onClick={toggleCollapsed}
-          style={{ marginBottom: 16 }}
-        >
+    <div className="header">
+      <div className={`logo-box center ${isCollapse ? "collapsed" : ""}`}>
+        {!isCollapse && "球鞋管理"}
+        <Button type="primary" onClick={toggleCollapsed}>
           {isCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </Button>
       </div>
