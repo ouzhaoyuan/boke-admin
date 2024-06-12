@@ -15,7 +15,7 @@ const Header = () => {
     <div className="header">
       <div className={`logo-box center ${isCollapse ? "collapsed" : ""}`}>
         {!isCollapse && "球鞋管理"}
-        <Button type="primary" onClick={toggleCollapsed}>
+        <Button type="primary" className="center" onClick={toggleCollapsed}>
           {isCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </Button>
       </div>
