@@ -6,6 +6,7 @@ import counterSlice from "./features/counterSlice";
 import movieSlice from "./features/movieSlice";
 import globalSlice from "./modules/global";
 import userSlice from "./modules/user";
+import shoeSlice from "./modules/shoe";
 
 const persistConfig = {
   key: "root", // 持久化的 key
@@ -17,13 +18,18 @@ const rootReducer = combineReducers({
   counter: counterSlice,
   movie: movieSlice,
   global: globalSlice,
-  user: userSlice
+  user: userSlice,
+  shoe: shoeSlice
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: persistedReducer
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false
+    })
 });
 
 export type RootState = ReturnType<typeof store.getState>;

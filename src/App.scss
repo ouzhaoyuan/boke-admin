@@ -10,3 +10,24 @@
   align-items: center;
   justify-content: center;
 }
+
+.fr{
+  float: right;
+}
+.fl{
+  float: left;
+}
+
+$position: ( "t": "top", "b": "bottom", "l": "left", "r": "right" );
+$type: ( "p": "padding", "m": "margin" );
+
+@each $item in $type {
+    @each $list in $position {
+        @for $i from 1 through 6 {
+            $val: $i * 5;
+            .#{nth($item, 1)}#{nth($list, 1)}#{$val} {
+                #{nth($item, 2)}-#{nth($list, 2)}: #{$val}px;
+            }
+        }
+    }
+}
