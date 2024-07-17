@@ -19,6 +19,14 @@ export declare namespace API {
 
   // 菜单管理
 
+  interface CreateMenuParams {
+    code: string; //菜单编码
+    path: string; // 路径
+    name: string; //菜单名称
+    sort?: string; //排序
+    parentId: string; //父级菜单,没有父级就传-1
+  }
+
   interface MenuParams {
     userId: string;
     needChild: string;
@@ -27,12 +35,14 @@ export declare namespace API {
 
   interface MenuItem {
     id: string; // 无
+    code: string; // 菜单编码
     parentId: string; // 父级菜单
-    child: Menu[]; // 子级
+    children?: Menu[]; // 子级
     path: string; // 菜单路径
     creator: string; // 无
     name: string; // 无
     sort: number;
     menuList: MenuItem[];
   }
+
 }

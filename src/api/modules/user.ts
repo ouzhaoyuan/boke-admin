@@ -13,6 +13,3 @@ export const getUserInfoApi = () => {
   return http.get<API.UserInfoResult>(`/sys-user/getUserInfo`);
 };
 
-export const getMenuByUserApi = (data: API.MenuParams) => {
-  return http.get<API.MenuItem[]>(`/sys-user/getMenuByUser`, data);
-};
