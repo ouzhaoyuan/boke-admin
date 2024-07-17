@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Navigate, useRoutes, RouteObject } from "react-router-dom";
 import {} from "@/routers/interface";
 import Login from "@/views/Login";

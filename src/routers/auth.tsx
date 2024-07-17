@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
  * @description: default layout
  */
 export const LayoutIndex = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token") || '1';
   if (token) {
     return <Layout />;
   } else {

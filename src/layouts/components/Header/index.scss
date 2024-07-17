@@ -1,0 +1,19 @@
+.header{
+  height: 60px;
+  background-color: #1f4b74;
+  .logo-box{
+    height: 100%;
+    max-width: 220px;
+    color: #fff;
+    font-size:1.25rem;
+    &.collapsed{
+      max-width: 80px;
+      button{
+        margin-left: unset;
+      }
+    }
+    button{
+      margin-left: 1rem;
+    }
+  }
+}
