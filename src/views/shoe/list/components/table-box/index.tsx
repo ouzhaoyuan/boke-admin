@@ -1,9 +1,9 @@
 import React from "react";
-import Table from "@/components/Table";
+import Table from "@/components/table";
 import { Button } from "antd";
 import { data } from "autoprefixer";
 import { render } from "nprogress";
-import TabBox from "../tagBox";
+import TabBox from "../tag-box";
 
 export interface shoe {
   id: number;

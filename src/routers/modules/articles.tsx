@@ -19,7 +19,7 @@ const articleRouter: Array<RouteObject> = [
       },
       {
         path: "/article/draft",
-        element: lazyLoad(React.lazy(() => import("@/views/Articles/Info"))),
+        element: lazyLoad(React.lazy(() => import("@/views/Articles/info"))),
         meta: {
           requiresAuth: true,
           title: "草稿箱",
@@ -28,7 +28,7 @@ const articleRouter: Array<RouteObject> = [
       },
       {
         path: "/article/info/:id",
-        element: lazyLoad(React.lazy(() => import("@/views/Articles/Info"))),
+        element: lazyLoad(React.lazy(() => import("@/views/Articles/info"))),
         meta: {
           requiresAuth: true,
           title: "文章详情",

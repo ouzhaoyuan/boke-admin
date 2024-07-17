@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import TableBox from "./components/tableBox/index";
-import FilterBox from "./components/filterBox/index";
+import TableBox from "./components/table-box/index";
+import FilterBox from "./components/filter-box/index";
 import { getShot } from "@/store/modules/shoe";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
