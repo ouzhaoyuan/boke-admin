@@ -1,6 +1,6 @@
-import LayoutHeader from "./components/Header";
-import LayoutFooter from "./components/Footer";
-import LayoutMenu from "./components/Menu";
+import LayoutHeader from "./components/header";
+import LayoutFooter from "./components/footer";
+import LayoutMenu from "./components/menu";
 import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
 import { useAppSelector } from "@/store/hooks";
