@@ -1,17 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getShotListApi } from "@/api/modules/shoe";
+import { getShotListApi, getShotBrandApi } from "@/api/modules/shoe";
 // export interface shoe {
 //   list: any;
 // }
 
 export const getShot = createAsyncThunk<any>("shoe/getShot", async () => {
-  console.log(222);
-
   return await getShotListApi();
 });
 
+export const getShotBrand = createAsyncThunk<any>(
+  "shoe/getShotBrand",
+  async () => {
+    return await getShotBrandApi();
+  }
+);
+
 const initialState: any = {
-  list: []
+  list: [],
+  brandList: []
 };
 
 export const shoeSlice = createSlice({
@@ -25,6 +31,9 @@ export const shoeSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(getShot.fulfilled, (state, action) => {
       state.list = state.list.concat(action.payload);
+    });
+    builder.addCase(getShotBrand.fulfilled, (state, action) => {
+      state.brandList = action.payload;
     });
   }
 });

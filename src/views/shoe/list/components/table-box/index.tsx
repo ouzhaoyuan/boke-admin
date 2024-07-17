@@ -23,37 +23,18 @@ export interface shoe {
 }
 
 const tableBox: React.FC<any> = ({ list }: any) => {
-  // const dataSource: shoe[] = [
-  //   {
-  //     id: 1,
-  //     image: "",
-  //     name: "nike 男子篮球鞋 科比8 圣诞节限定配色",
-  //     code: "SJYD003-02",
-  //     color: "黑/白",
-  //     size: "41",
-  //     number: 1,
-  //     status: 1,
-  //     platform: "淘宝",
-  //     startTime: "2022-01-01",
-  //     startPrice: 100,
-  //     endTime: "2022-01-01",
-  //     endPrice: 100,
-  //     profit: 100
-  //   }
-  // ];
-
   const columns: any = [
     {
       title: "图片",
       dataIndex: "image",
       width: 100,
       render: (_: any, row: any) => {
-        return <img src={row.image} alt={row.title} />;
+        return <img src={row.image} alt={row.title}></img>;
       }
     },
     {
       title: "商品名称",
-      dataIndex: "name",
+      dataIndex: "title",
       ellipsis: true,
       width: 200
     },

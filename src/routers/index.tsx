@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Navigate, useRoutes, RouteObject } from "react-router-dom";
 import {} from "@/routers/interface";
-import Login from "@/views/Login";
+import Login from "@/views/login";
 
 const metaRouters: any = import.meta.glob("./modules/*.tsx",{ eager: true });
 

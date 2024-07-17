@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Table } from "antd";
-import TablePaging from "@/components/TablePaging/index";
+import TablePaging from "@/components/table-paging/index";
 import useUrlQuery from "@/hooks/useUrlQuery";
 import { getArticleListApi } from "@/api/modules/article";
 import { useNavigate } from "react-router-dom";

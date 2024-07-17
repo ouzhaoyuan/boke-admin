@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Table from "@/components/Table";
+import Table from "@/components/table";
 import {
   Button,
   message,
@@ -7,7 +7,7 @@ import {
   TableColumnsType,
   TableProps
 } from "antd";
-import MenuFormModal from "./components/MenuFormModal";
+import MenuFormModal from "./components/menu-form-modal";
 import { getMenuListApi, delMenuApi } from "@/api/modules/menu";
 import { API } from "@/api/modules/typings";
 

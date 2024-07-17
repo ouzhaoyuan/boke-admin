@@ -1,20 +1,20 @@
-import Modal from "@/components/FormModal";
+import Modal from "@/components/form-modal";
 import { createMenuApi, editMenuApi } from "@/api/modules/menu";
 import { API } from "@/api/modules/typings";
 import { message } from "antd";
-interface MenuFormModalProps {
+interface BrandFormModalProps {
+  formId?: number;
   isModalOpen: boolean;
-  parentId?: string;
   initialValues?: object;
   cancel: (update?: boolean) => void;
 }
 export default function MenuFormModal({
+  formId,
   isModalOpen,
-  parentId = "-1",
   cancel,
   initialValues = {}
-}: MenuFormModalProps) {
-  const isNew = !!Object.keys(initialValues).length;
+}: BrandFormModalProps) {
+  const isNew = !!formId
   const fields: Form.Fields = [
     {
       type: "Input",
@@ -23,24 +23,13 @@ export default function MenuFormModal({
       rules: [{ required: true, message: "请输入名称" }]
     },
     {
-      type: "Input",
-      label: "路径",
-      prop: "path"
-    },
-    {
-      type: "Input",
-      label: "编号",
-      prop: "code",
-      rules: [{ required: true, message: "请输入编号" }]
-    },
-    {
-      type: "Input",
-      label: "排序",
+      type: "Radio",
+      label: "是否启用",
       prop: "sort"
     }
   ];
-  const onFinish = async (form: API.CreateMenuParams & { id: string }) => {
-    form = { ...form, parentId };
+  const onFinish = async (form: any & { id: string }) => {
+    form = { ...form ,formId};
     let api = isNew ? editMenuApi : createMenuApi;
     const { err } = await api(form);
     if (err) return err;
@@ -54,8 +43,8 @@ export default function MenuFormModal({
   return (
     <>
       <Modal
-        formId={parentId + isNew}
-        title={isNew ? "编辑菜单" : "新增菜单"}
+        formId={String(formId)}
+        title={isNew ? "编辑品牌" : "新增品牌"}
         visible={isModalOpen}
         initialValues={initialValues}
         fields={fields}

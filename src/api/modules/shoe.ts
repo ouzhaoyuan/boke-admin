@@ -9,7 +9,8 @@ export const getShotListApi = () => {
         {
           id: 1,
           image: "",
-          name: "nike 男子篮球鞋 科比8 圣诞节限定配色",
+          title: "nike ,男子篮球鞋 科比8 圣诞节限定配色",
+          statue: 0,
           code: "SJYD003-02",
           color: "黑/白",
           size: "41",
@@ -21,6 +22,19 @@ export const getShotListApi = () => {
           endTime: "2022-01-01",
           endPrice: 100,
           profit: 100
+        }
+      ]);
+    }, 500);
+  });
+};
+export const getShotBrandApi = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([
+        {
+          id: 1,
+          title: "nike",
+          statue: 0
         }
       ]);
     }, 500);

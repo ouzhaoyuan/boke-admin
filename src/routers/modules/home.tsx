@@ -2,7 +2,7 @@
 // import lazyLoad from "@/routers/util/lazyLoad";
 import { LayoutIndex } from "@/routers/auth";
 import { RouteObject } from "@/routers/interface";
-import Home from "@/views/Home/index";
+import Home from "@/views/home/index";
 
 // 首页模块
 const homeRouter: Array<RouteObject> = [

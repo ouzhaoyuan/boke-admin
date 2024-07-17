@@ -10,7 +10,7 @@ const articleRouter: Array<RouteObject> = [
     children: [
       {
         path: "/auth/role",
-        element: lazyLoad(React.lazy(() => import("@/views/Auth/Menu"))),
+        element: lazyLoad(React.lazy(() => import("@/views/auth/menu"))),
         meta: {
           requiresAuth: true,
           title: "角色管理",
@@ -19,7 +19,7 @@ const articleRouter: Array<RouteObject> = [
       },
       {
         path: "/auth/menu",
-        element: lazyLoad(React.lazy(() => import("@/views/Auth/Menu"))),
+        element: lazyLoad(React.lazy(() => import("@/views/auth/menu"))),
         meta: {
           requiresAuth: true,
           title: "菜单目录",

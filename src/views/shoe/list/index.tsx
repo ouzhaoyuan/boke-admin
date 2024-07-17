@@ -12,9 +12,8 @@ const Index: React.FC = () => {
       dispatch(getShot());
     }, 1000);
   }, []);
-  const list2: never[] = []
-  const {list} = useAppSelector((state) => state.shoe);
-  
+  const { list } = useAppSelector((state) => state.shoe);
+
   return (
     <>
       <FilterBox />

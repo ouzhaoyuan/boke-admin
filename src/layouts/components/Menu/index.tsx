@@ -20,7 +20,6 @@ const LayoutMenu = (props: any) => {
   const [loading, setLoading] = useState(false);
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
-
   // 刷新页面菜单保持高亮
   useEffect(() => {
     setSelectedKeys([pathname]);
@@ -88,37 +87,50 @@ const LayoutMenu = (props: any) => {
     // if (err) return;
     let data = [
       {
-        "icon": "HomeOutlined",
-        "title": "首页",
-        "path": "/home",
-        "children": []
+        icon: "HomeOutlined",
+        title: "首页",
+        path: "/home",
+        children: []
       },
       {
-        "icon": "HomeOutlined",
-        "title": "鞋子管理",
-        "path": "/shoe/list",
-        "children": []
-      },
-      {
-        "icon": "HomeOutlined",
-        "title": "权限管理",
-        "path": "/shoe",
-        "children": [
+        icon: "HomeOutlined",
+        title: "鞋子管理",
+        path: "/shoe",
+        children: [
           {
-            "icon": "HomeOutlined",
-            "title": "角色管理",
-            "path": "/auth/role",
-            "children": []
+            icon: "HomeOutlined",
+            title: "鞋子管理",
+            path: "/shoe/list",
+            children: []
           },
           {
-            "icon": "HomeOutlined",
-            "title": "菜单目录",
-            "path": "/auth/menu",
-            "children": []
-          },
+            icon: "HomeOutlined",
+            title: "分类管理",
+            path: "/shoe/brand",
+            children: []
+          }
         ]
       },
-    ]
+      {
+        icon: "HomeOutlined",
+        title: "权限管理",
+        path: "/auth",
+        children: [
+          {
+            icon: "HomeOutlined",
+            title: "角色管理",
+            path: "/auth/role",
+            children: []
+          },
+          {
+            icon: "HomeOutlined",
+            title: "菜单目录",
+            path: "/auth/menu",
+            children: []
+          }
+        ]
+      }
+    ];
     if (data) setMenuList(deepLoopFloat(data));
   };
 
