@@ -34,7 +34,7 @@ export const getShotBrandApi = () => {
         {
           id: 1,
           title: "nike",
-          statue: 0
+          status: 1
         }
       ]);
     }, 500);

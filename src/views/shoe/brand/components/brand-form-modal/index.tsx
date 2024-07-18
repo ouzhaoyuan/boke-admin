@@ -2,34 +2,39 @@ import Modal from "@/components/form-modal";
 import { createMenuApi, editMenuApi } from "@/api/modules/menu";
 import { API } from "@/api/modules/typings";
 import { message } from "antd";
+import { Brand } from "../table-box";
 interface BrandFormModalProps {
   formId?: number;
   isModalOpen: boolean;
-  initialValues?: object;
+  initialValues?: Brand;
   cancel: (update?: boolean) => void;
 }
 export default function MenuFormModal({
-  formId,
   isModalOpen,
   cancel,
-  initialValues = {}
+  initialValues = {} as Brand
 }: BrandFormModalProps) {
-  const isNew = !!formId
+  const isNew = !!initialValues?.id;
   const fields: Form.Fields = [
     {
       type: "Input",
       label: "名称",
-      prop: "name",
+      prop: "title",
       rules: [{ required: true, message: "请输入名称" }]
     },
     {
       type: "Radio",
       label: "是否启用",
-      prop: "sort"
+      options: [
+        { label: "是", value: 1 },
+        { label: "否", value: 0 }
+      ],
+      rules: [{ required: true }],
+      prop: "status"
     }
   ];
   const onFinish = async (form: any & { id: string }) => {
-    form = { ...form ,formId};
+    form = { ...form };
     let api = isNew ? editMenuApi : createMenuApi;
     const { err } = await api(form);
     if (err) return err;
@@ -43,7 +48,7 @@ export default function MenuFormModal({
   return (
     <>
       <Modal
-        formId={String(formId)}
+        formId={String(initialValues?.id)}
         title={isNew ? "编辑品牌" : "新增品牌"}
         visible={isModalOpen}
         initialValues={initialValues}

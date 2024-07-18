@@ -49,7 +49,7 @@ export default function Form({
             key={field.prop}
             rules={field.rules}
             label={field.label}
-            labelCol={{ span: 4 }}
+            labelCol={{ span: 8 }}
             name={field.prop}
           >
             <Component {...field} />

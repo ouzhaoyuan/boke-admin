@@ -4,7 +4,7 @@ import { Button, Switch, Popconfirm } from "antd";
 import { data } from "autoprefixer";
 import { render } from "nprogress";
 
-export interface brand {
+export interface Brand {
   id: number;
   name: string;
   status: number;
@@ -24,7 +24,7 @@ const tableBox: React.FC<any> = ({ list, onEdit }: any) => {
       title: "状态",
       dataIndex: "status",
       width: 100,
-      render: (_: any, row: brand) => {
+      render: (_: any, row: Brand) => {
         return <Switch checked={row.status === 1}></Switch>;
       }
     },
@@ -33,7 +33,7 @@ const tableBox: React.FC<any> = ({ list, onEdit }: any) => {
       dataIndex: "operaction",
       width: 200,
       fixed: "right",
-      render: (_: never, row: brand) => {
+      render: (_: never, row: Brand) => {
         return (
           <>
             <Button className="mr10" onClick={() => onEdit(row)}>
