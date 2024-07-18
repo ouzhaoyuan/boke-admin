@@ -4,7 +4,6 @@ import { API } from "@/api/modules/typings";
 import { message } from "antd";
 import { Brand } from "../table-box";
 interface BrandFormModalProps {
-  formId?: number;
   isModalOpen: boolean;
   initialValues?: Brand;
   cancel: (update?: boolean) => void;
