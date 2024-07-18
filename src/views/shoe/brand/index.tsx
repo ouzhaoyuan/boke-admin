@@ -25,6 +25,9 @@ const Index: React.FC = () => {
   const onCanel = () => {
     setIsModalOpen(!isModalOpen);
   };
+  const onDel = (id: number) => {
+    console.log(id);
+  };
 
   return (
     <>
@@ -36,7 +39,7 @@ const Index: React.FC = () => {
         cancel={onCanel}
         initialValues={form}
       ></BrandFormModal>
-      <TableBox list={brandList} onEdit={onEdit} />
+      <TableBox list={brandList} edit={onEdit} del={onDel} />
     </>
   );
 };

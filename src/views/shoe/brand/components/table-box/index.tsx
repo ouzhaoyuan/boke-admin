@@ -10,7 +10,7 @@ export interface Brand {
   status: number;
 }
 
-const tableBox: React.FC<any> = ({ list, onEdit }: any) => {
+const tableBox: React.FC<any> = ({ list, edit, del }: any) => {
   const columns: any = [
     {
       title: "id",
@@ -36,7 +36,7 @@ const tableBox: React.FC<any> = ({ list, onEdit }: any) => {
       render: (_: never, row: Brand) => {
         return (
           <>
-            <Button className="mr10" onClick={() => onEdit(row)}>
+            <Button className="mr10" onClick={() => edit(row)}>
               编辑
             </Button>
             <Popconfirm
@@ -44,7 +44,7 @@ const tableBox: React.FC<any> = ({ list, onEdit }: any) => {
               okText="确定"
               cancelText="取消"
               onConfirm={() => {
-                onDel(row.id);
+                del(row.id);
               }}
             >
               <Button type="primary">删除</Button>
@@ -54,9 +54,6 @@ const tableBox: React.FC<any> = ({ list, onEdit }: any) => {
       }
     }
   ];
-  const onDel = (row: any) => {
-    console.log(row);
-  };
   return (
     <>
       <Table
