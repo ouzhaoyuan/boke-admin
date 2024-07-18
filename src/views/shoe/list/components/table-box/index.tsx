@@ -22,7 +22,7 @@ export interface shoe {
   profit: number;
 }
 
-const tableBox: React.FC<any> = ({ list }: any) => {
+const tableBox: React.FC<any> = ({ list, edit }: any) => {
   const columns: any = [
     {
       title: "图片",
@@ -99,10 +99,17 @@ const tableBox: React.FC<any> = ({ list }: any) => {
     {
       title: "操作",
       dataIndex: "operaction",
-      width: 100,
+      width: 200,
       fixed: "right",
       render: (_: never, row: never) => {
-        return <Button onClick={() => onDel(row)}>删除</Button>;
+        return (
+          <div>
+            <Button className="mr10" onClick={() => edit(row)}>
+              修改
+            </Button>
+            <Button onClick={() => onDel(row)}>删除</Button>
+          </div>
+        );
       }
     }
   ];

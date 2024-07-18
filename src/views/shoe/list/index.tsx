@@ -26,7 +26,7 @@ const Index: React.FC = () => {
     <>
       <Modal isModalOpen={isModalOpen} cancel={onCanel} initialValues={form} />
       <FilterBox />
-      <TableBox list={list} />
+      <TableBox list={list} edit={onEdit}  />
     </>
   );
 };
