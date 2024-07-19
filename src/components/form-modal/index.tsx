@@ -6,6 +6,7 @@ import { API } from "@/api/modules/typings";
 interface FormModalProps {
   formId: string;
   fields: Form.Fields;
+  width?: number;
   title: string;
   visible: boolean;
   params?: object;
@@ -18,6 +19,7 @@ interface FormModalProps {
 export default function FormModal({
   formId = "-1",
   fields = [],
+  width = 600,
   title,
   visible,
   onFinish,
@@ -29,6 +31,7 @@ export default function FormModal({
   return (
     <>
       <Modal
+        width={width}
         title={title}
         footer={null}
         open={visible}

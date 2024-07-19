@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "@/components/table";
 import { Button } from "antd";
+import Image from "@/components/base-image";
 import { data } from "autoprefixer";
 import { render } from "nprogress";
 import TabBox from "../tag-box";
@@ -29,7 +30,7 @@ const tableBox: React.FC<any> = ({ list, edit }: any) => {
       dataIndex: "image",
       width: 100,
       render: (_: any, row: any) => {
-        return <img src={row.image} alt={row.title}></img>;
+        return <Image src={row.image}></Image>;
       }
     },
     {
@@ -124,6 +125,7 @@ const tableBox: React.FC<any> = ({ list, edit }: any) => {
         scroll={{ x: 1000, y: 900 }}
         sticky
         columns={columns}
+        rowKey="id"
       ></Table>
     </>
   );

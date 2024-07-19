@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TableBox from "./components/table-box/index";
 import FilterBox from "./components/filter-box/index";
-import Modal from "./components/shoe-form-modal/index";
+import ShoeFormModal from "./components/shoe-form-modal/index";
 import { getShot } from "@/store/modules/shoe";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
@@ -24,9 +24,13 @@ const Index: React.FC = () => {
   };
   return (
     <>
-      <Modal isModalOpen={isModalOpen} cancel={onCanel} initialValues={form} />
+      <ShoeFormModal
+        isModalOpen={isModalOpen}
+        cancel={onCanel}
+        initialValues={form}
+      />
       <FilterBox />
-      <TableBox list={list} edit={onEdit}  />
+      <TableBox list={list} edit={onEdit} />
     </>
   );
 };

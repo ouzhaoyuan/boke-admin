@@ -13,7 +13,10 @@ declare namespace Form {
     placeholder?: string;
     span?: string | number;
     rules?: Rule[];
+    size?: string;
     displayCondition?: DisplayCondition;
+    getValueFromEvent?: (...args: any[]) => string;
+    render?: (value) => JSX.Element | Element;
   }
 
   type OptionsRequest = () => Promise<Option[]>;
@@ -51,6 +54,20 @@ declare namespace Form {
     type: "Radio";
   }
 
+  interface DatePickerField extends BaseField {
+    type: "DatePicker";
+  }
+
+  interface UploadField extends BaseField {
+    type: "Upload";
+    action: string;
+    showUploadList?: boolean;
+    headers?: any;
+    fileList?: [];
+    listType?: string;
+    onChange: (res: any) => void;
+  }
+
   interface FormItemProps {
     value: any;
     onChange: (value: any) => void;
@@ -62,6 +79,8 @@ declare namespace Form {
     // | FlexibleDatePickerField
     // | ButtonRadioField
     | RadioField
-    | TextareaField;
+    | DatePickerField
+    | TextareaField
+    | UploadField;
   type Fields = Field[];
 }

@@ -6,6 +6,8 @@ import {
   Radio,
   Row,
   Col,
+  DatePicker,
+  Upload,
   FormProps as AntdFormProps
 } from "antd";
 import { ReactNode, useEffect } from "react";
@@ -23,7 +25,9 @@ const fieldComponents = {
   Input,
   Textarea: Input.TextArea,
   Select,
-  Radio: Radio.Group
+  DatePicker,
+  Radio: Radio.Group,
+  Upload
 };
 export default function Form({
   onFinish,
@@ -44,15 +48,16 @@ export default function Form({
     return fields.map((field, index) => {
       const Component = fieldComponents[field.type] as any;
       return (
-        <Col span={field.span || 24} key={index}>
+        <Col span={field.span || 12} key={index}>
           <AntdForm.Item
             key={field.prop}
             rules={field.rules}
             label={field.label}
             labelCol={{ span: 8 }}
             name={field.prop}
+            getValueFromEvent={field.getValueFromEvent}
           >
-            <Component {...field} />
+            <Component {...field} >{field.render && field.render(field)}</Component>
           </AntdForm.Item>
         </Col>
       );
