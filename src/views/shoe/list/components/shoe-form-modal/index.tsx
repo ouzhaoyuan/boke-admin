@@ -1,7 +1,6 @@
 import Modal from "@/components/form-modal";
 import { createMenuApi, editMenuApi } from "@/api/modules/menu";
 import { API } from "@/api/modules/typings";
-import UploadBtn from "@/components/form/upload-box";
 import { Image } from "antd";
 import { message } from "antd";
 import { useEffect, useState } from "react";
