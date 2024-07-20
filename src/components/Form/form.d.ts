@@ -65,7 +65,7 @@ declare namespace Form {
     headers?: any;
     fileList?: [];
     listType?: string;
-    onChange: (res: any) => void;
+    onChange?: (res: any) => void;
   }
 
   interface FormItemProps {

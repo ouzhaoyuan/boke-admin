@@ -17,7 +17,6 @@ export default function MenuFormModal({
   initialValues = {}
 }: ShoeFormModalProps) {
   const isNew = !!initialValues?.id;
-  const [fileList, setFileList] = useState<[]>() as any[];
   useEffect(() => {
     // setFileList(initialValues.image ? initialValues.image : []);
   }, ["initialValues"]);
@@ -27,19 +26,12 @@ export default function MenuFormModal({
       action: "http://localhost:3000/upload",
       label: "图片",
       prop: "image",
-      getValueFromEvent:(e)=>{
-        return e?.file?.response?.data?.url
+      getValueFromEvent: (e) => {
+        return e?.file?.response?.data?.url;
       },
-      fileList,
       showUploadList: false,
-      listType:"picture-card",
-      rules: [{ required: true, message: "请上传图片" }],
-      render: (e) => {
-       return <UploadBtn image={initialValues.image} loading={false}></UploadBtn>
-      },
-      onChange: function ({ file }) {
-        setFileList([file]);
-      },
+      listType: "picture-card",
+      rules: [{ required: true, message: "请上传图片" }]
     },
     {
       type: "Input",

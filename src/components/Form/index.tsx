@@ -7,9 +7,9 @@ import {
   Row,
   Col,
   DatePicker,
-  Upload,
   FormProps as AntdFormProps
 } from "antd";
+import Upload from "@/components/base-upload";
 import { ReactNode, useEffect } from "react";
 
 type FormProps = Omit<AntdFormProps, "onFinish" | "fields"> & {
@@ -57,7 +57,9 @@ export default function Form({
             name={field.prop}
             getValueFromEvent={field.getValueFromEvent}
           >
-            <Component {...field} >{field.render && field.render(field)}</Component>
+            <Component {...field}>
+              {field.render && field.render(field)}
+            </Component>
           </AntdForm.Item>
         </Col>
       );

@@ -6,6 +6,18 @@ interface ImageBoxProps {
   width?: number;
   preview?: boolean;
 }
-export default function ImageBox({ src, width=70, preview = true }: ImageBoxProps) {
-  return  <Image style={{width,height:width}}  preview={preview} src={src}></Image>
+export default function ImageBox({
+  src,
+  width = 70,
+  preview = true
+}: ImageBoxProps) {
+  const className = preview ? "border" : "";
+  return (
+    <Image
+      style={{ width, height: width }}
+      preview={preview}
+      className={className}
+      src={src}
+    ></Image>
+  );
 }
