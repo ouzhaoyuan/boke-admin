@@ -29,7 +29,7 @@ const filterBox: React.FC = () => {
           mode="multiple"
           allowClear
           style={{ width: "100%" }}
-          placeholder="请选择时间" 
+          placeholder="请选择平台"
           defaultValue={["a10", "c12"]}
           onChange={handleChange}
           options={options}
