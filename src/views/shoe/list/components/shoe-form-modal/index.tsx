@@ -16,9 +16,6 @@ export default function MenuFormModal({
   initialValues = {}
 }: ShoeFormModalProps) {
   const isNew = !!initialValues?.id;
-  useEffect(() => {
-    // setFileList(initialValues.image ? initialValues.image : []);
-  }, ["initialValues"]);
   const fields: Form.Fields = [
     {
       type: "Upload",
