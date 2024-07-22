@@ -30,7 +30,7 @@ export const shoeSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(getShot.fulfilled, (state, action) => {
-      state.list = state.list.concat(action.payload);
+      state.list = state.list.concat(action.payload.data.list);
     });
     builder.addCase(getShotBrand.fulfilled, (state, action) => {
       state.brandList = action.payload;

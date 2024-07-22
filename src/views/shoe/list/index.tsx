@@ -19,6 +19,10 @@ const Index: React.FC = () => {
     setForm(form);
     setIsModalOpen(!isModalOpen);
   };
+  const onAdd = () => {
+    setIsModalOpen(!isModalOpen);
+    setForm({});
+  };
   const onCanel = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -29,7 +33,7 @@ const Index: React.FC = () => {
         cancel={onCanel}
         initialValues={form}
       />
-      <FilterBox />
+      <FilterBox add={onAdd} />
       <TableBox list={list} edit={onEdit} />
     </>
   );

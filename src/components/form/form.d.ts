@@ -16,6 +16,7 @@ declare namespace Form {
     size?: string;
     displayCondition?: DisplayCondition;
     getValueFromEvent?: (...args: any[]) => string;
+    valuePropName?:string;
     render?: (value) => JSX.Element | Element;
   }
 
@@ -56,6 +57,7 @@ declare namespace Form {
 
   interface DatePickerField extends BaseField {
     type: "DatePicker";
+    format: string;
   }
 
   interface UploadField extends BaseField {

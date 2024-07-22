@@ -7,13 +7,14 @@ export default (props: UploadProps) => {
   const [fileList, setFileList] = useState<[]>() as any[];
   const [image, setImage] = useState<string>("");
   const [loading, setLoading] = useState(false);
-  const onChange = ({ file }: any) => {
+  const onChange = ({ file,fileList:_fileList }: any) => {
     let { status, response } = file;
     if (status === "uploading") {
       setLoading(true);
     } else if (status === "done" && response.code === 200) {
       message.success("上传成功");
-      setFileList([file]);
+      props.onChange && props.onChange({ fileList: _fileList, file })
+      setFileList([..._fileList]);
       setImage(response.data.url);
       setLoading(false);
     } else if (file.status === "done" && response.code === 0) {

@@ -1,9 +1,10 @@
 import Modal from "@/components/form-modal";
-import { createMenuApi, editMenuApi } from "@/api/modules/menu";
+import { addShoeApi } from "@/api/modules/shoe";
 import { API } from "@/api/modules/typings";
 import { Image } from "antd";
 import { message } from "antd";
 import { useEffect, useState } from "react";
+import dayjs from "dayjs";
 interface ShoeFormModalProps {
   formId?: number;
   isModalOpen: boolean;
@@ -22,6 +23,7 @@ export default function MenuFormModal({
       action: "http://localhost:3000/upload",
       label: "图片",
       prop: "image",
+      valuePropName: "fileList",
       getValueFromEvent: (e) => {
         return e?.file?.response?.data?.url;
       },
@@ -75,6 +77,7 @@ export default function MenuFormModal({
       label: "入手时间",
       prop: "startTime",
       rules: [{ required: true, message: "请选择入手时间" }],
+      format:'YYYY/M/D',
       placeholder: "请选择入手时间"
     },
     {
@@ -87,14 +90,13 @@ export default function MenuFormModal({
       type: "DatePicker",
       label: "卖出时间",
       prop: "endTime",
-      rules: [{ required: true, message: "请选择卖出时间" }],
+      format:'YYYY/M/D',
       placeholder: "请选择卖出时间"
     },
     {
       type: "Input",
       label: "卖出价格",
-      prop: "endPrice",
-      rules: [{ required: true, message: "请输入卖出价格" }]
+      prop: "endPrice"
     },
     {
       type: "Radio",
@@ -103,16 +105,13 @@ export default function MenuFormModal({
         { label: "是", value: 1 },
         { label: "否", value: 0 }
       ],
-      rules: [{ required: true }],
+      rules: [{ required: true, message: "请选择是否启用" }],
       prop: "status"
     }
   ];
   const onFinish = async (form: any & { id: string }) => {
     let _form = { ...form };
-    console.log(initialValues);
-    console.log(form);
-
-    let api = isNew ? editMenuApi : createMenuApi;
+    let api = isNew ? addShoeApi : addShoeApi;
     const { err } = await api(form);
     if (err) return err;
     message.success(isNew ? "新增成功" : "编辑成功");

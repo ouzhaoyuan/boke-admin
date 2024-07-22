@@ -5,6 +5,10 @@ import type { SelectProps } from "antd";
 
 const { RangePicker } = DatePicker;
 
+interface FilterBoxProps {
+  add: () => void;
+}
+
 const options: SelectProps["options"] = [];
 
 for (let i = 10; i < 36; i++) {
@@ -18,7 +22,7 @@ const handleChange = (value: string[]) => {
   console.log(`selected ${value}`);
 };
 
-const filterBox: React.FC = () => {
+const filterBox: React.FC<FilterBoxProps> = ({ add }) => {
   return (
     <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]} className="mb10">
       <Col span={4}>
@@ -50,7 +54,7 @@ const filterBox: React.FC = () => {
         <Input placeholder="请选择状态" />
       </Col>
       <div style={{ marginLeft: "auto" }}>
-        <Button type="primary" icon={<DownloadOutlined />}>
+        <Button type="primary" icon={<DownloadOutlined />} onClick={add}>
           新增
         </Button>
       </div>
