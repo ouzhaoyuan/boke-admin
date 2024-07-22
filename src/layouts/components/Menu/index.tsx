@@ -101,13 +101,16 @@ const LayoutMenu = (props: any) => {
             icon: "HomeOutlined",
             title: "鞋子管理",
             path: "/shoe/list",
-            children: []
           },
           {
             icon: "HomeOutlined",
-            title: "分类管理",
+            title: "品牌管理",
             path: "/shoe/brand",
-            children: []
+          },
+          {
+            icon: "HomeOutlined",
+            title: "平台管理",
+            path: "/shoe/platform",
           }
         ]
       },

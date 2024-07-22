@@ -1,5 +1,5 @@
 import Modal from "@/components/form-modal";
-import { createMenuApi, editMenuApi } from "@/api/modules/menu";
+import { addShoeApi } from "@/api/modules/shoe";
 import { API } from "@/api/modules/typings";
 import { Image } from "antd";
 import { message } from "antd";
@@ -22,7 +22,11 @@ export default function MenuFormModal({
       action: "http://localhost:3000/upload",
       label: "图片",
       prop: "image",
+      valuePropName:"fileList",
       getValueFromEvent: (e) => {
+        console.log('====================================');
+        console.log(e);
+        console.log('====================================');
         return e?.file?.response?.data?.url;
       },
       showUploadList: false,
@@ -87,14 +91,12 @@ export default function MenuFormModal({
       type: "DatePicker",
       label: "卖出时间",
       prop: "endTime",
-      rules: [{ required: true, message: "请选择卖出时间" }],
       placeholder: "请选择卖出时间"
     },
     {
       type: "Input",
       label: "卖出价格",
       prop: "endPrice",
-      rules: [{ required: true, message: "请输入卖出价格" }]
     },
     {
       type: "Radio",
@@ -109,10 +111,7 @@ export default function MenuFormModal({
   ];
   const onFinish = async (form: any & { id: string }) => {
     let _form = { ...form };
-    console.log(initialValues);
-    console.log(form);
-
-    let api = isNew ? editMenuApi : createMenuApi;
+    let api = isNew ? addShoeApi : addShoeApi;
     const { err } = await api(form);
     if (err) return err;
     message.success(isNew ? "新增成功" : "编辑成功");

@@ -22,8 +22,17 @@ const shoeRouter: Array<RouteObject> = [
         element: lazyLoad(React.lazy(() => import("@/views/shoe/brand"))),
         meta: {
           requiresAuth: true,
-          title: "球鞋分类",
-          key: "shoe-list"
+          title: "品牌列表",
+          key: "shoe-brand"
+        }
+      },
+      {
+        path: "/shoe/platform",
+        element: lazyLoad(React.lazy(() => import("@/views/shoe/platform"))),
+        meta: {
+          requiresAuth: true,
+          title: "平台列表",
+          key: "shoe-platform"
         }
       },
       {

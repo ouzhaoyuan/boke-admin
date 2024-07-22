@@ -16,6 +16,7 @@ declare namespace Form {
     size?: string;
     displayCondition?: DisplayCondition;
     getValueFromEvent?: (...args: any[]) => string;
+    valuePropName?:string;
     render?: (value) => JSX.Element | Element;
   }
 

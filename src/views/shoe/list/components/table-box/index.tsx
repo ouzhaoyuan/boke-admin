@@ -35,7 +35,7 @@ const tableBox: React.FC<any> = ({ list, edit }: any) => {
     },
     {
       title: "商品名称",
-      dataIndex: "title",
+      dataIndex: "name",
       ellipsis: true,
       width: 200
     },
