@@ -25,6 +25,9 @@ export default function MenuFormModal({
       prop: "image",
       valuePropName: "fileList",
       getValueFromEvent: (e) => {
+        console.log('====================================');
+        console.log(e);
+        console.log('====================================');
         return e?.file?.response?.data?.url;
       },
       showUploadList: false,
